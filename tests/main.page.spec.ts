@@ -142,8 +142,14 @@ test.describe('тесты главной страницы', () => {
     await page.getByRole('button', { name: 'Switch between dark and light' }).click()
     await expect.soft(page.locator('html')).toHaveAttribute('data-theme', 'dark')
 });
-
-
-
-})
+  ['light', 'dark'].forEach((value) => {
+    test(`Проверка стилей активного ${value} мода`, async ({page}) => {
+      await page.getByRole('button', { name: 'Switch between dark and light' }).click()
+      await page.evaluate(() => {
+        document.querySelector('html')?.setAttribute('data-theme', value);
+      }, value);
+      await expect(page).toHaveScreenshot(`pageWith${value}Mode.png`);
+   });
+  });
+});
 

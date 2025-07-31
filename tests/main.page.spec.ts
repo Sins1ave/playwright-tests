@@ -9,7 +9,7 @@ interface Elements {
     type: string;
     value: string;
   };
-}
+};
 
 
 const elements: Elements[] = [

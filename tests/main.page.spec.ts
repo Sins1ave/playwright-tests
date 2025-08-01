@@ -1,5 +1,4 @@
-import { test, expect, Page, Locator } from '@playwright/test';
-
+import { test, expect, Page, Locator } from "@playwright/test";
 
 interface Elements {
   locator: (page: Page) => Locator;
@@ -9,147 +8,160 @@ interface Elements {
     type: string;
     value: string;
   };
-};
-
+}
 
 const elements: Elements[] = [
   {
-    locator: (page: Page): Locator => 
-      page.getByRole('link', { name: 'Playwright logo Playwright' }), 
-    name: 'Playwright logo',
-    text: 'Playwright',
+    locator: (page: Page): Locator =>
+      page.getByRole("link", { name: "Playwright logo Playwright" }),
+    name: "Playwright logo",
+    text: "Playwright",
     attribute: {
-      type: 'href',
-      value: '/',
+      type: "href",
+      value: "/",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'Docs' }), 
-    name: 'Docs link',
-    text: 'Docs',
+    locator: (page: Page): Locator => page.getByRole("link", { name: "Docs" }),
+    name: "Docs link",
+    text: "Docs",
     attribute: {
-      type: 'href',
-      value: '/docs/intro',
+      type: "href",
+      value: "/docs/intro",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'API' }), 
-    name: 'API link',
-    text: 'API', 
+    locator: (page: Page): Locator => page.getByRole("link", { name: "API" }),
+    name: "API link",
+    text: "API",
     attribute: {
-      type: 'href',
-      value: '/docs/api/class-playwright',
+      type: "href",
+      value: "/docs/api/class-playwright",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('button', { name: 'Node.js' }), 
-    name: 'Node.js button',
-    text: 'Node.js',
+    locator: (page: Page): Locator =>
+      page.getByRole("button", { name: "Node.js" }),
+    name: "Node.js button",
+    text: "Node.js",
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'Community' }), 
-    name: 'Community link',
-    text: 'Community', 
+    locator: (page: Page): Locator =>
+      page.getByRole("link", { name: "Community" }),
+    name: "Community link",
+    text: "Community",
     attribute: {
-      type: 'href',
-      value: '/community/welcome',
+      type: "href",
+      value: "/community/welcome",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'GitHub repository' }), 
-    name: 'GitHub icon',
+    locator: (page: Page): Locator =>
+      page.getByRole("link", { name: "GitHub repository" }),
+    name: "GitHub icon",
     attribute: {
-      type: 'href',
-      value: 'https://github.com/microsoft/playwright',
+      type: "href",
+      value: "https://github.com/microsoft/playwright",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'Discord server' }), 
-    name: 'Discord icon',
+    locator: (page: Page): Locator =>
+      page.getByRole("link", { name: "Discord server" }),
+    name: "Discord icon",
     attribute: {
-      type: 'href',
-      value: 'https://aka.ms/playwright/discord',
+      type: "href",
+      value: "https://aka.ms/playwright/discord",
     },
   },
   {
-    locator: (page: Page): Locator => page.getByRole('button', { name: 'Switch between dark and light' }), 
-    name: 'lightmode icon',
+    locator: (page: Page): Locator =>
+      page.getByRole("button", { name: "Switch between dark and light" }),
+    name: "lightmode icon",
   },
   {
-    locator: (page: Page): Locator => page.getByRole('button', { name: 'Search (Ctrl+K)' }), 
-    name: 'Seartch input',
+    locator: (page: Page): Locator =>
+      page.getByRole("button", { name: "Search (Ctrl+K)" }),
+    name: "Seartch input",
   },
   {
-    locator: (page: Page): Locator => page.getByRole('heading', { name: 'Playwright enables reliable' }), 
-    name: 'Title',
-    text: 'Playwright enables reliable end-to-end testing for modern web apps.',
+    locator: (page: Page): Locator =>
+      page.getByRole("heading", { name: "Playwright enables reliable" }),
+    name: "Title",
+    text: "Playwright enables reliable end-to-end testing for modern web apps.",
   },
   {
-    locator: (page: Page): Locator => page.getByRole('link', { name: 'Get started' }), 
-    name: 'Get started button',
-    text: 'Get started',
+    locator: (page: Page): Locator =>
+      page.getByRole("link", { name: "Get started" }),
+    name: "Get started button",
+    text: "Get started",
     attribute: {
-      type: 'href',
-      value: '/docs/intro',
+      type: "href",
+      value: "/docs/intro",
     },
   },
-
 ];
 
-test.describe('тесты главной страницы', () => {
-  test.beforeEach(async ({page}) => {
-    await page.goto('https://playwright.dev/');
+test.describe("тесты главной страницы", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("https://playwright.dev/");
   });
-  test('Проверка отображения элементов навигации хеддера', async ({ page }) => {
-    elements.forEach(({locator, name}) => {
+  test("Проверка отображения элементов навигации хеддера", async ({ page }) => {
+    elements.forEach(({ locator, name }) => {
       test.step(`Проверка отображения элемента ${name}`, async () => {
-      await expect.soft(locator(page)).toBeVisible();
+        await expect.soft(locator(page)).toBeVisible();
+      });
     });
-    })
-    
-    
-  
-});
+  });
 
-  test('Проверка названия элементов навигации хеддера', async ({ page }) => {
-    elements.forEach(({locator, name, text}) => {
+  test("Проверка названия элементов навигации хеддера", async ({ page }) => {
+    elements.forEach(({ locator, name, text }) => {
       if (text) {
         test.step(`Проверка названия элемента ${name}`, async () => {
-         await expect.soft(locator(page)).toContainText(text);
+          await expect.soft(locator(page)).toContainText(text);
         });
-      };
-      
+      }
     });
-    
+  });
 
-});
-
-  test('Проверка атрибутов href элементов навигации хеддера', async ({ page }) => {
-    elements.forEach(({locator, name, attribute }) => {
+  test("Проверка атрибутов href элементов навигации хеддера", async ({
+    page,
+  }) => {
+    elements.forEach(({ locator, name, attribute }) => {
       if (attribute) {
         test.step(`Проверка атрибутов href элемента ${name}`, async () => {
-         await expect.soft(locator(page)).toHaveAttribute(attribute?.type, attribute?.value);
+          await expect
+            .soft(locator(page))
+            .toHaveAttribute(attribute?.type, attribute?.value);
         });
-      };
-      
+      }
     });
+  });
 
-});
-
-  test('Проверка переключения лайт мода', async ({ page }) => {
-    
-    await page.getByRole('button', { name: 'Switch between dark and light' }).click()
-    await page.getByRole('button', { name: 'Switch between dark and light' }).click()
-    await expect.soft(page.locator('html')).toHaveAttribute('data-theme', 'dark')
-});
-  ['light', 'dark'].forEach((value) => {
-    test(`Проверка стилей активного ${value} мода`, async ({page}) => {
-      await page.getByRole('button', { name: 'Switch between dark and light' }).click()
+  test("Проверка переключения лайт мода", async ({ page }) => {
+    await page
+      .getByRole("button", { name: "Switch between dark and light" })
+      .click();
+    await page
+      .getByRole("button", { name: "Switch between dark and light" })
+      .click();
+    await expect
+      .soft(page.locator("html"))
+      .toHaveAttribute("data-theme", "dark");
+  });
+  ["light", "dark"].forEach((value) => {
+    test(`Проверка стилей активного ${value} мода`, async ({ page }) => {
+      await page
+        .getByRole("button", { name: "Switch between dark and light" })
+        .click();
       await page.evaluate(() => {
-        document.querySelector('html')?.setAttribute('data-theme', value);
+        document.querySelector("html")?.setAttribute("data-theme", value);
       }, value);
       await expect(page).toHaveScreenshot(`pageWith${value}Mode.png`);
-   });
+    });
   });
+  await page.goto("https://www.google.com/?gws_rd=ssl");
+  await expect(page.getByRole("link", { name: "Войти" })).toBeVisible();
+  await expect(page.getByLabel("Почта")).toContainText("Почта");
+  await page.locator(".lnXdpd").click();
+  await page.locator(".lnXdpd").click();
 });
-

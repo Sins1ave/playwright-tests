@@ -159,9 +159,5 @@ test.describe("тесты главной страницы", () => {
       await expect(page).toHaveScreenshot(`pageWith${value}Mode.png`);
     });
   });
-  await page.goto("https://www.google.com/?gws_rd=ssl");
-  await expect(page.getByRole("link", { name: "Войти" })).toBeVisible();
-  await expect(page.getByLabel("Почта")).toContainText("Почта");
-  await page.locator(".lnXdpd").click();
-  await page.locator(".lnXdpd").click();
+
 });

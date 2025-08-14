@@ -34,6 +34,7 @@ export default defineConfig({
     locale: "ru-RU",
     acceptLanguage: "ru",
     baseURL: process.env.API_BASE_URL,
+    
   },
 
   /* Configure projects for major browsers */

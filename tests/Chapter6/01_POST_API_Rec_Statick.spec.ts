@@ -38,5 +38,7 @@ test("Создание POST API  запроса изпользуя статич�
   expect(jsonPostAPIResponse.booking.firstname).toBe('Vlad');
   expect(jsonPostAPIResponse.booking.lastname).toBe('Playwrigt');
 
+  expect(jsonPostAPIResponse.booking.bookingdates.checkin).toBe('2026-01-01'); 
+  expect(jsonPostAPIResponse.booking.bookingdates.checkout).toBe('2026-01-03');
 
 });
